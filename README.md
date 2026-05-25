@@ -2,7 +2,7 @@
 
 <img src="https://github.com/Aditya24Kashyap/BrowserIDE/raw/main/public/vibe-code-editor-thumbnaail.svg" alt="Vibecode Editor" width="600"/>
 
-# ⚡ Vibecode Editor
+# ⚡ Browser IDE - AI Vibecode Editor
 
 ### AI-Powered Browser IDE — Code, Run, and Chat without leaving your tab.
 
