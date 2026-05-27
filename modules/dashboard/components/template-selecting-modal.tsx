@@ -40,7 +40,7 @@ type TemplateSelectionModalProps = {
 
 interface TemplateOption {
   id: string;
-  name: string;
+  name: string ;
   description?: string | null;
   icon: string;
   color: string;
@@ -151,7 +151,7 @@ const TemplateSelectionModal = ({
   const filteredTemplates = templates.filter((template) => {
     const matchesSearch =
       template.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      template.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (template.description || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
       template.tags.some((tag) =>
         tag.toLowerCase().includes(searchQuery.toLowerCase())
       );
@@ -188,9 +188,9 @@ const TemplateSelectionModal = ({
 
       const template = templates.find((t) => t.id === selectedTemplate);
       onSubmit({
-        title:projectName || `New ${template?.name} Project`,
+        title:projectName || `New ${template?.name || "Template"} Project`,
         template:templateMap[selectedTemplate] || "REACT",
-        description:template?.description
+        description:template?.description || undefined
       })
       onClose();
       // Reset state for next time
@@ -341,7 +341,7 @@ const TemplateSelectionModal = ({
                             </div>
 
                             <p className="text-sm text-muted-foreground mb-3">
-                              {template.description}
+                              {template.description || "No description available"}
                             </p>
 
                             <div className="flex flex-wrap gap-2 mt-auto">
@@ -408,7 +408,7 @@ const TemplateSelectionModal = ({
                 Configure Your Project
               </DialogTitle>
               <DialogDescription>
-                {templates.find((t) => t.id === selectedTemplate)?.name} project
+                {templates.find((t) => t.id === selectedTemplate)?.name || "Selected"} project
                 configuration
               </DialogDescription>
             </DialogHeader>
