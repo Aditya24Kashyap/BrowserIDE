@@ -41,7 +41,7 @@ type TemplateSelectionModalProps = {
 interface TemplateOption {
   id: string;
   name: string;
-  description: string;
+  description?: string | null;
   icon: string;
   color: string;
   popularity: number;

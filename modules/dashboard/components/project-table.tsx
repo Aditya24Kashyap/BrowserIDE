@@ -59,7 +59,7 @@ interface ProjectTableProps {
   projects: Project[];
   onUpdateProject?: (
     id: string,
-    data: { title: string; description: string }
+    data: { title: string; description?: string | null }
   ) => Promise<void>;
   onDeleteProject?: (id: string) => Promise<void>;
   onDuplicateProject?: (id: string) => Promise<void>;
@@ -68,7 +68,7 @@ interface ProjectTableProps {
 
 interface EditProjectData {
   title: string;
-  description: string;
+  description?: string | null;
 }
 
 export default function ProjectTable({
