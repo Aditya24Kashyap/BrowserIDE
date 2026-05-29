@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "app/api/template/[id]/route.ts": {
+      "includeFiles": "vibecode-starters/**"
+    }
+  }
+}
