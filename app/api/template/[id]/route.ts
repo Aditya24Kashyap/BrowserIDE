@@ -23,32 +23,49 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
 
-const {id} = await params;
+  const { id } = await params;
 
-if(!id){
-      return Response.json({ error: "Missing playground ID" }, { status: 400 });
-}
+  if (!id) {
+    return Response.json({ error: "Missing playground ID" }, { status: 400 });
+  }
 
-const playground = await db.playground.findUnique({
-    where:{id}
-})
+  const playground = await db.playground.findUnique({
+    where: { id }
+  })
 
   if (!playground) {
     return Response.json({ error: "Playground not found" }, { status: 404 });
   }
-  
+
   const templateKey = playground.template as keyof typeof templatePaths;
   const templatePath = templatePaths[templateKey]
 
-    if (!templatePath) {
+  if (!templatePath) {
     return Response.json({ error: "Invalid template" }, { status: 404 });
   }
 
   try {
-    const inputPath = path.join(process.cwd() , templatePath);
-    const outputFile = path.join(process.cwd() , `output/${templateKey}.json`);
+    // const inputPath = path.join(process.cwd() , templatePath);
+    // const outputFile = path.join(process.cwd() , `output/${templateKey}.json`);
+    const inputPath = path.join(process.cwd(), templatePath);
+    const outputFile = path.join(process.cwd(), `output/${templateKey}.json`);
 
-    await saveTemplateStructureToJson(inputPath , outputFile);
+    console.log("========== TEMPLATE DEBUG ==========");
+    console.log("cwd:", process.cwd());
+    console.log("templateKey:", templateKey);
+    console.log("templatePath:", templatePath);
+    console.log("inputPath:", inputPath);
+
+    try {
+      const stats = await fs.stat(inputPath);
+      console.log("Template exists:", stats.isDirectory());
+    } catch (e) {
+      console.error("Template NOT found:", inputPath);
+    }
+
+    console.log("====================================");
+
+    await saveTemplateStructureToJson(inputPath, outputFile);
     const result = await readTemplateStructureFromJson(outputFile);
 
 
@@ -60,9 +77,9 @@ const playground = await db.playground.findUnique({
     await fs.unlink(outputFile)
 
 
-      return Response.json({ success: true, templateJson: result }, { status: 200 });
+    return Response.json({ success: true, templateJson: result }, { status: 200 });
   } catch (error) {
-      console.error("Error generating template JSON:", error);
+    console.error("Error generating template JSON:", error);
     return Response.json({ error: "Failed to generate template" }, { status: 500 });
   }
 
