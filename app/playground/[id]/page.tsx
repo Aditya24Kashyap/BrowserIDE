@@ -33,7 +33,9 @@ import {
   TemplateFile,
   TemplateFolder,
 } from "@/modules/playground/lib/path-to-json";
-import WebContainerPreview from "@/modules/webcontainers/components/webcontainer-preview";
+// import WebContainerPreview from "@/modules/webcontainers/components/webcontainer-preview";
+import dynamic from "next/dynamic";
+const WebContainerPreview = dynamic(() => import("@/modules/webcontainers/components/webcontainer-preview"), { ssr: false });
 import { useWebContainer } from "@/modules/webcontainers/hooks/useWebContainer";
 import {
   AlertCircle,
