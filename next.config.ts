@@ -3,14 +3,11 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   eslint: { ignoreDuringBuilds: true },
   reactStrictMode: false,
+  outputFileTracingIncludes: {
+    '/api/template/[id]': ['./vibecode-starters/**/*'],
+  },
   images: {
     remotePatterns: [{ protocol: "https", hostname: "*" }],
-  },
-  experimental: {
-    // @ts-expect-error - outputFileTracingIncludes not in types but works
-    outputFileTracingIncludes: {
-      '/api/template/[id]': ['./vibecode-starters/**/*'],
-    },
   },
   async headers() {
     return [
