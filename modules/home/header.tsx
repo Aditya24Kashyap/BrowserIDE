@@ -143,7 +143,7 @@ export function Header() {
             <span className="rounded border border-emerald-500/40 bg-emerald-500/10 px-1 py-px text-[9px] font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">New</span>
           </Link> */}
           <Link
-            href="https://github.com/Aditya24Kashyap/BrowserIDE#readme"
+            href="https://webcontainers.io/api"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-white/[0.05] rounded-md transition-colors"
