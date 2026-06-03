@@ -5,9 +5,11 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    template: "VibeCode - Editor ",
-    default: "Code Editor For VibeCoders - VibeCode",
+    template: "%s | BrowserIDE",
+    default: "BrowserIDE - AI Browser IDE powered by WebContainers",
   },
+  description:
+    "Write, run, and debug React, Next.js, Express and more in your browser. Powered by WebContainers, Monaco Editor, and local Ollama AI.",
 };
 export default function HomeLayout({
   children,
