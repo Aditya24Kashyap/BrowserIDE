@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://github.com/Aditya24Kashyap/BrowserIDE/raw/main/public/vibe-code-editor-thumbnaail.svg" alt="Vibecode Editor" width="600"/>
+<img src="https://github.com/Aditya24Kashyap/BrowserIDE/raw/main/public/BrowserIDE_preview.png" alt="Vibecode Editor" width="600"/>
 
 # ⚡ Browser IDE - AI Vibecode Editor
 
