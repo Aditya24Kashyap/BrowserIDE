@@ -26,6 +26,7 @@ export const metadata: Metadata = {
   description:
     "Build, run, and preview applications directly in your browser using WebContainers.",
   applicationName: "BrowserIDE",
+  icons: { icon: "/logo.svg" },
 };
 
 export default async function RootLayout({
